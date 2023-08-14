@@ -1,0 +1,72 @@
+import { Meta} from '@storybook/blocks';
+
+
+<Meta title="Overview" />
+
+
+# Overview
+
+A React component that truncates text based on available space and supports multiline. Perfect for creating article previews, blog snippets, product card descriptions and many more. 
+
+
+Compatible with Next 13
+
+
+## Install
+
+It can be installed with npm, yarn or pnpm
+
+### npm
+```sh
+  npm install react-truncatable
+```
+
+### yarn
+```sh
+  yarn add react-truncatable
+```
+
+### pnpm
+```sh
+  pnpm install react-truncatable
+```
+
+### **Usage**
+
+Include the css once at the root eg `_app.(tsx|jsx|js)` , `index.(tsx|jsx|js)`
+
+```jsx
+import "react-truncatable/style.css"
+```
+
+at the top of the file where it is needed, import
+
+```jsx
+import Truncatable from "react-truncatable";
+```
+
+and use like so
+
+```jsx
+<Truncatable content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quae quas fugit repudiandae. A cumque dicta expedita, omnis ex voluptatibus eum quaerat ipsum molestiae id qui cum saepe labore inventore voluptas ipsam necessitatibus mollitia. Libero eum aliquam officiis sit reiciendis nihil hic suscipit delectus doloremque doloribus magnam, eligendi sequi!" />
+```
+
+
+### **Run and develop SDS locally**
+
+Clone the [SDS GitHub project](https://github.com/storybookjs/design-system) then start Storybook.
+
+`yarn && yarn run storybook`
+
+## Used by
+
+- [Storybook homepage](https://storybook.js.org/)
+- [LearnStorybook.com](https://www.learnstorybook.com/)
+- [ChromaticQA.com](https://www.chromaticqa.com/)
+
+Note: this package is not used in Storybook's UI, but the visual design is identical.
+
+### **Resources**
+
+- [Introducing Storybook Design System](https://medium.com/storybookjs/introducing-storybook-design-system-23fd9b1ac3c0)
+- [GitHub repository](https://github.com/storybookjs/design-system)

@@ -16,9 +16,22 @@
   "resolutions": {
     "jackspeak": "2.1.1"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "main": "./dist/react-truncatable.umd.cjs",
+  "module": "./dist/react-truncatable.js",
+  "types": "./dist/react-truncatable.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/react-truncatable.js",
+      "require": "./dist/react-truncatable.umd.cjs"
+    },
+    "./*.css": {
+      "import": "./dist/*.css",
+      "require": "./dist/*.css"
+    }
   },
   "devDependencies": {
     "@storybook/addon-essentials": "7.2.3",

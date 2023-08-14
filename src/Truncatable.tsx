@@ -60,7 +60,6 @@ const useIsomorphicLayoutEffect =
 
 /**
  * Truncate text based on the available space.
- *
  * @template T - React element type.
  * @param {TruncatableProps<T>} props - The component props.
  * @returns {JSX.Element} The html element with the truncated content.
