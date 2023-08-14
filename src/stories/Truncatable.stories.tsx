@@ -1,7 +1,6 @@
 import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
-// import { within, userEvent, findByRole } from '@storybook/testing-library';
 
 import Truncatable from "../Truncatable";
 
@@ -99,7 +98,7 @@ export const WithCustomClassNameAndStyle: Story = {
     className: "w-1/3 h-[90px] rounded-md p-3",
     style: {
       backgroundColor: "coral",
-      textColor: "black",
+      color: "black",
     },
   },
 };
@@ -113,36 +112,3 @@ export const AsALink: Story = {
     className: "inline-block w-[70px]",
   },
 };
-
-// import { rest } from 'msw';
-
-// import InboxScreen from './InboxScreen';
-
-// import { Default as TaskListDefault } from './components/TaskList.stories';
-
-// import { within, userEvent, findByRole } from '@storybook/testing-library';
-
-// import { expect } from '@storybook/jest';
-
-// // ... code omitted for brevity ...
-
-// export const PinTask = {
-//   parameters: {
-//     ...Default.parameters,
-//   },
-//   play: async ({ canvasElement }) => {
-//     const canvas = within(canvasElement);
-//     const getTask = (id) => canvas.findByRole('listitem', { name: id });
-
-//     const itemToPin = await getTask('task-4');
-//     // Find the pin button
-//     const pinButton = await findByRole(itemToPin, 'button', { name: 'pin' });
-//     // Click the pin button
-//     await userEvent.click(pinButton);
-//     // Check that the pin button is now a unpin button
-//     const unpinButton = within(itemToPin).getByRole('button', {
-//       name: 'unpin',
-//     });
-//     await expect(unpinButton).toBeInTheDocument();
-//   },
-// };

@@ -1,6 +1,5 @@
 import { clamp, stripEscapedCharacters } from "../utils";
 
-// sum.test.js
 import { expect, test } from "vitest";
 
 test("A number [20] is clamped between 0 and 10 as 10", () => {
