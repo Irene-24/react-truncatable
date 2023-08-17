@@ -51,6 +51,23 @@ and use like so
 <Truncatable content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quae quas fugit repudiandae. A cumque dicta expedita, omnis ex voluptatibus eum quaerat ipsum molestiae id qui cum saepe labore inventore voluptas ipsam necessitatibus mollitia. Libero eum aliquam officiis sit reiciendis nihil hic suscipit delectus doloremque doloribus magnam, eligendi sequi!" />
 ```
 
+You can also import the types, and use them if you need them (TS only)
+
+```jsx
+
+import Truncatable, { ToggleProps } from "react-truncatable";
+
+const b: Omit<ToggleProps, "togglerRef"> = {
+  showAll: true,
+  toggle() {
+
+  },
+};
+
+console.log(b);
+
+```
+
 
 ### **Run and develop SDS locally**
 

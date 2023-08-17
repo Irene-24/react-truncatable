@@ -15,7 +15,7 @@ import {
   stripEscapedCharacters,
 } from "./utils";
 
-interface ToggleProps {
+export interface ToggleProps {
   showAll: boolean;
   toggle: () => void;
   togglerRef: React.MutableRefObject<HTMLButtonElement | null>;
@@ -49,7 +49,7 @@ interface Props<T extends React.ElementType> {
 /**
  * Props type for the Truncatable component.
  */
-type TruncatableProps<T extends React.ElementType> = Props<T> &
+export type TruncatableProps<T extends React.ElementType> = Props<T> &
   Omit<ComponentPropsWithoutRef<T>, "children" & keyof Props<T>>;
 
 /**
