@@ -30,13 +30,13 @@ const meta: Meta<typeof Truncatable> = {
     },
     className: {
       description:
-        "CSS class name for styling. Do not override the relative positioning ",
+        "CSS class for styling.",
       table: {
         defaultValue: { summary: "relative" },
       },
     },
     style: {
-      description: "Style object. Do not override the relative positioning ",
+      description: "Style object.",
     },
     charsLimit: {
       description:
@@ -49,6 +49,7 @@ const meta: Meta<typeof Truncatable> = {
       description:
         "A function that returns a ReactNode. The rendered element hass access to 'showAll': a boolean that indicates if all the content is showing, 'toggle': a function to toggle show state,  'togglerRef': a ref to help calculate the truncation ",
     },
+    ["...o"]
   },
 };
 
