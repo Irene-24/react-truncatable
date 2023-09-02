@@ -29,8 +29,7 @@ const meta: Meta<typeof Truncatable> = {
       },
     },
     className: {
-      description:
-        "CSS class for styling.",
+      description: "CSS class for styling.",
       table: {
         defaultValue: { summary: "relative" },
       },
@@ -49,7 +48,6 @@ const meta: Meta<typeof Truncatable> = {
       description:
         "A function that returns a ReactNode. The rendered element hass access to 'showAll': a boolean that indicates if all the content is showing, 'toggle': a function to toggle show state,  'togglerRef': a ref to help calculate the truncation ",
     },
-    ["...o"]
   },
 };
 
@@ -105,11 +103,18 @@ export const WithCustomClassNameAndStyle: Story = {
 };
 
 export const AsALink: Story = {
-  args: {
-    content: textString,
-    as: "a",
-    href: "https://en.wikipedia.org/wiki/Lorem_ipsum",
-    target: "_blank",
-    className: "inline-block w-[70px]",
-  },
+  render: () => (
+    <Truncatable
+      content={textString}
+      as="a"
+      target="_blank"
+      href="https://en.wikipedia.org/wiki/Lorem_ipsum"
+      className="inline-block w-[70px] cursor-pointer"
+      renderToggleButton={({ togglerRef }) => (
+        <span className="p-1  text-sm" ref={togglerRef}>
+          &#128279;
+        </span>
+      )}
+    />
+  ),
 };
