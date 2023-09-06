@@ -29,3 +29,5 @@ src/code/*
 .out
 .storybook-out
 storybook-static
+
+.env
