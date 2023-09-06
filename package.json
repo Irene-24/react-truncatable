@@ -26,7 +26,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
-    "cypress:open": "cypress open --component"
+    "cypress:open": "cypress open --component",
+    "prepublish": "npm run build"
   },
   "resolutions": {
     "jackspeak": "2.1.1"
