@@ -16,6 +16,8 @@
     "url": "https://github.com/Irene-24/react-truncatable",
     "type": "git"
   },
+  "homepage": "https://64f883177ec11e1edcf84fc7-hpmuefbevq.chromatic.com/?path=/docs/stories-truncatable--docs",
+  "bugs": "https://github.com/Irene-24/react-truncatable/issues",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
