@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 src/code/*
+
+# Storybook build outputs
+.out
+.storybook-out
+storybook-static
