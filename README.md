@@ -1,27 +1,72 @@
-# React + TypeScript + Vite
+# Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React component that truncates text based on available space and supports multiline. Perfect for creating article previews, blog snippets, product card descriptions and many more.
 
-Currently, two official plugins are available:
+Compatible with Next 13
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Install
 
-## Expanding the ESLint configuration
+It can be installed with npm, yarn or pnpm
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### npm
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```sh
+  npm install react-truncatable
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### yarn
+
+```sh
+  yarn add react-truncatable
+```
+
+### pnpm
+
+```sh
+  pnpm install react-truncatable
+```
+
+### **Usage**
+
+Include the css in `_app.(tsx|jsx|js)` or `index.(tsx|jsx|js)`or `app.(tsx|jsx|js)`, or whatever is the root jsx file.
+
+```jsx
+import "react-truncatable/style.css"
+```
+
+Include the import at the top, where the Truncatable will be used:
+
+```jsx
+import Truncatable from "react-truncatable";
+```
+
+and use like so
+
+```jsx
+<Truncatable content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quae quas fugit repudiandae. A cumque dicta expedita, omnis ex voluptatibus eum quaerat ipsum molestiae id qui cum saepe labore inventore voluptas ipsam necessitatibus mollitia. Libero eum aliquam officiis sit reiciendis nihil hic suscipit delectus doloremque doloribus magnam, eligendi sequi!" />
+```
+
+You can also import the types, and use them if you need them (TS only)
+
+```jsx
+
+import Truncatable, { ToggleProps } from "react-truncatable";
+
+const b: Omit<ToggleProps, "togglerRef"> = {
+  showAll: true,
+  toggle() {
+
+  },
+};
+
+console.log(b);
+
+```
+
+### **Help  and Questions**
+
+Raise an issue [here](https://github.com/Irene-24/react-truncatable/issues/new)
+
+### **Support the project**
+
+Don't forget to star the repository if it was helpful to you.

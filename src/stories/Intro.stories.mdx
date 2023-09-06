@@ -33,13 +33,13 @@ It can be installed with npm, yarn or pnpm
 
 ### **Usage**
 
-Include the css once at the root eg `_app.(tsx|jsx|js)` , `index.(tsx|jsx|js)`
+Include the css in `_app.(tsx|jsx|js)` or `index.(tsx|jsx|js)`or `app.(tsx|jsx|js)`, or whatever is the root jsx file.
 
 ```jsx
 import "react-truncatable/style.css"
 ```
 
-at the top of the file where it is needed, import
+Include the import at the top, where the Truncatable will be used:
 
 ```jsx
 import Truncatable from "react-truncatable";
@@ -67,23 +67,3 @@ const b: Omit<ToggleProps, "togglerRef"> = {
 console.log(b);
 
 ```
-
-
-### **Run and develop SDS locally**
-
-Clone the [SDS GitHub project](https://github.com/storybookjs/design-system) then start Storybook.
-
-`yarn && yarn run storybook`
-
-## Used by
-
-- [Storybook homepage](https://storybook.js.org/)
-- [LearnStorybook.com](https://www.learnstorybook.com/)
-- [ChromaticQA.com](https://www.chromaticqa.com/)
-
-Note: this package is not used in Storybook's UI, but the visual design is identical.
-
-### **Resources**
-
-- [Introducing Storybook Design System](https://medium.com/storybookjs/introducing-storybook-design-system-23fd9b1ac3c0)
-- [GitHub repository](https://github.com/storybookjs/design-system)
