@@ -12,6 +12,10 @@
     "ellipsis",
     "preview"
   ],
+  "repository": {
+    "url": "https://github.com/Irene-24/react-truncatable",
+    "type": "git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
