@@ -1,6 +1,5 @@
 {
   "name": "react-truncatable",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -10,11 +9,28 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest"
+    "test": "vitest",
+    "cypress:open": "cypress open --component"
   },
-  "dependencies": {
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
+  "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "main": "./dist/react-truncatable.umd.cjs",
+  "module": "./dist/react-truncatable.js",
+  "types": "./dist/react-truncatable.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/react-truncatable.js",
+      "require": "./dist/react-truncatable.umd.cjs"
+    },
+    "./*.css": {
+      "import": "./dist/*.css",
+      "require": "./dist/*.css"
+    }
   },
   "devDependencies": {
     "@storybook/addon-essentials": "7.2.3",
@@ -34,6 +50,7 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "autoprefixer": "^10.4.14",
+    "cypress": "^12.17.3",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
