@@ -22,7 +22,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          command: yarn cypress:open
+          command: yarn cypress:run
           browser: chrome
 
   publish-npm:
