@@ -1,4 +1,4 @@
-[![Node.js Package Workflow](https://github.com/Irene-24/react-truncatable/actions/workflows/publish.yaml/badge.svg)](https://github.com/Irene-24/react-truncatable/actions/workflows/publish.yaml)
+[![Test,Build,Publish](https://github.com/Irene-24/react-truncatable/actions/workflows/build-publish.yaml/badge.svg)](https://github.com/Irene-24/react-truncatable/actions/workflows/build-publish.yaml)
 
 [![Chromatic](https://github.com/Irene-24/react-truncatable/actions/workflows/chromatic.yaml/badge.svg)](https://github.com/Irene-24/react-truncatable/actions/workflows/chromatic.yaml)
 
