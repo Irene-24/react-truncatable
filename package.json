@@ -28,6 +28,7 @@
     "build-storybook": "storybook build",
     "test": "vitest",
     "cypress:open": "cypress open --component",
+    "cypress:run": "cypress run --component",
     "prepublish": "npm run build"
   },
   "resolutions": {

@@ -1,3 +1,7 @@
+[![Node.js Package Workflow](https://github.com/Irene-24/react-truncatable/actions/workflows/publish.yaml/badge.svg)](https://github.com/Irene-24/react-truncatable/actions/workflows/publish.yaml)
+
+[![Chromatic](https://github.com/Irene-24/react-truncatable/actions/workflows/chromatic.yaml/badge.svg)](https://github.com/Irene-24/react-truncatable/actions/workflows/chromatic.yaml)
+
 # Overview
 
 A React component that truncates text based on available space and supports multiline. Perfect for creating article previews, blog snippets, product card descriptions and many more.
