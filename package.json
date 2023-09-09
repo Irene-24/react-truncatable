@@ -1,6 +1,6 @@
 {
   "name": "react-truncatable",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "type": "module",
   "license": "MIT",
   "author": "Irene-24",
@@ -91,6 +91,5 @@
     "vite-plugin-dts": "^3.5.2",
     "vitest": "^0.34.1"
   },
-  "readme": "ERROR: No README data found!",
-  "_id": "react-truncatable@0.0.0"
+  "readme": "ERROR: No README data found!"
 }
