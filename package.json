@@ -1,6 +1,6 @@
 {
   "name": "react-truncatable",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "license": "MIT",
   "description": "A React component that truncates text based on available space and supports multiline. Perfect for creating article previews, blog snippets, product card descriptions and many more.Compatible with Next 13",
@@ -49,6 +49,9 @@
       "require": "./dist/*.css"
     }
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@storybook/addon-essentials": "7.4.0",
     "@storybook/addon-interactions": "7.4.0",
