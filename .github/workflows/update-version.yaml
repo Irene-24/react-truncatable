@@ -35,6 +35,9 @@ jobs:
           user_email="${{ github.event.sender.email }}"
           user_name="${{ github.event.sender.login }}"
 
+          echo '$version_increment'
+          echo '${{ toJSON(github.event) }}' | jq
+
           # Increment the package version based on the selected option
           npm version $version_increment
           
