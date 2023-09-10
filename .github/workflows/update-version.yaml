@@ -29,11 +29,8 @@ jobs:
 
       - name: Update Package Version
         run: |
-          # Get the version increment from the workflow input
           version_increment="${{ github.event.inputs.version }}"
-          
 
-          # Increment the package version based on the selected option
           npm version $version_increment          
 
       - name: Commit changes to package.json 
