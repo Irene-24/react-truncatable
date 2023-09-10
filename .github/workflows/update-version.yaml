@@ -1,0 +1,52 @@
+name: Update Package Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version increment (major, minor, patch)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - 'major'
+          - 'minor'
+          - 'patch'
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14  # Use the Node.js version you need
+
+      - name: Update Package Version
+        run: |
+          # Get the version increment from the workflow input
+          version_increment="${{ github.event.inputs.version }}"
+          
+          # Get the user email and name from the GitHub event
+          user_email="${{ github.event.sender.email }}"
+          user_name="${{ github.event.sender.login }}"
+
+          # Increment the package version based on the selected option
+          npm version $version_increment
+          
+          # Set the user email and name for the commit
+          git config user.email "$user_email"
+          git config user.name "$user_name"
+
+      - name: Commit package.json and package-lock.json
+        run: |
+          git add .
+          git commit -m "Update package version [skip ci]"
+
+      - name: Push updated package.json
+        run: |
+          git push origin main --tags
