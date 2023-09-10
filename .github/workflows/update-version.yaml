@@ -27,7 +27,7 @@ jobs:
           # Fetch the user email using GitHub API
           USER_EMAIL=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/user/emails | jq -r '.[0].email')
+            https://api.github.com/user/emails | jq -r 'map(select(.primary == true))[0].email')
 
           ::set-output name=email::$USER_EMAIL
         shell: bash
