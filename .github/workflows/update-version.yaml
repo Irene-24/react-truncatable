@@ -30,6 +30,7 @@ jobs:
       - name: Update Package Version
         env:
           EMAIL: ${{ secrets.EMAIL }}
+          
         run: |
           # Get the version increment from the workflow input
           version_increment="${{ github.event.inputs.version }}"
