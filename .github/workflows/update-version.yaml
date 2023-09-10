@@ -13,6 +13,8 @@ on:
           - 'minor'
           - 'patch'
 
+permissions: write-all
+
 jobs:
     
   update-version:
@@ -30,7 +32,6 @@ jobs:
       - name: Update Package Version
         run: |
           version_increment="${{ github.event.inputs.version }}"
-
           npm version $version_increment          
 
       - name: Commit changes to package.json 
