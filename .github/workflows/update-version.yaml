@@ -34,14 +34,12 @@ jobs:
           
 
           # Increment the package version based on the selected option
-          npm version $version_increment
-          
-          # Set the user email and name for the commit
-           git config user.name "github-actions"
-           git config user.email "github-actions@github.com"
+          npm version $version_increment          
 
       - name: Commit changes to package.json 
         run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           git add .
           git commit -m "Update package version [skip ci]"
 
