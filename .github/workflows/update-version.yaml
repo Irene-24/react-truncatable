@@ -28,21 +28,18 @@ jobs:
           node-version: 16  # Use the Node.js version you need
 
       - name: Update Package Version
-        env:
-          EMAIL: ${{ secrets.EMAIL }}
-          
+
         run: |
           # Get the version increment from the workflow input
           version_increment="${{ github.event.inputs.version }}"
           
-          user_name="${{ github.actor }}"
 
           # Increment the package version based on the selected option
           npm version $version_increment
           
           # Set the user email and name for the commit
-          git config user.name "$user_name"
-          git config user.email "$EMAIL"
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ secrets.EMAIL }}"
 
       - name: Commit changes to package.json 
         run: |
