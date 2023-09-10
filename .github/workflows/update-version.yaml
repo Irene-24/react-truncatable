@@ -32,9 +32,7 @@ jobs:
           # Get the version increment from the workflow input
           version_increment="${{ github.event.inputs.version }}"
           
-
-          user_name="${{ github.event.sender.login }}"
-          
+          user_name="${{ github.actor}}"
 
           # Increment the package version based on the selected option
           npm version $version_increment
