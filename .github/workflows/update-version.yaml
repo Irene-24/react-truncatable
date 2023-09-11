@@ -52,7 +52,9 @@ jobs:
       
       - name: Commit staged files [updated package.json]
         run: |
+          set +e  # Disable exit-on-error temporarily
           git commit -m "Update package version [skip ci]"
+          set -e  # Re-enable exit-on-error        
 
 
       - name: Push updated package.json
