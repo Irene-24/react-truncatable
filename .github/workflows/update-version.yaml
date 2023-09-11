@@ -1,4 +1,4 @@
-name: Update Package Version
+name: Update Package Version and Make PR to dev
 
 on:
   workflow_dispatch:
@@ -68,7 +68,7 @@ jobs:
 
 
       - name: Make PR to dev
-        run: gh pr create --base dev --title "PR from ${{ github.ref }} to dev" --body "Automated PR from ${{ github.ref }} to dev"
+        run: gh pr create --base dev --title "PR from ${{ github.head_ref }} to dev" --body "Automated PR from ${{ github.ref }} to dev"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 
