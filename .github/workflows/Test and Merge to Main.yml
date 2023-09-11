@@ -1,0 +1,95 @@
+name: Test and Merge to Main
+
+on:
+  pull_request_target:
+    branches:
+      - dev
+    types:
+      - opened
+
+permissions: write-all
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+defaults:
+  run:
+    shell: bash
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }} 
+
+      - name: Create a temporary branch
+        run: |
+          git checkout -b temp-branch
+          git push origin temp-branch
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Dependencies with Yarn
+        run: yarn install  # Use Yarn to install dependencies
+      - name: Run Tests with Yarn
+        run: yarn test  # Use Yarn to run tests
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          command: yarn cypress:run
+          browser: chrome
+
+      - name: Merge to Dev if tests pass
+        run: |
+          if [ $? -eq 0 ]; then
+            git pull origin dev  
+            git merge --no-ff temp-branch
+            git push origin dev --tags
+          else
+            echo "Tests failed, not merging to dev."
+          fi
+
+  make-pr-to-main:
+    runs-on: ubuntu-latest     
+    needs: test
+    if: success()  
+    outputs:
+     PR_URL: ${{ steps.create-pr.outputs.PR_URL }}
+    steps:
+        - uses: actions/checkout@v4
+        - name: Checkout
+          run: echo "Checkout main"
+          shell: bash
+
+        - name: Create PR to main  
+          id: create-pr
+          run: |
+           pr_output=$(gh pr create --base main --head dev --title "PR from dev to main" --body "PR from dev to main") 
+               echo "PR_URL=$pr_output" >> $GITHUB_OUTPUT
+          shell: bash
+
+  automerge:
+    runs-on: ubuntu-latest
+    needs: make-pr-to-main
+    env:
+      PR_URL: ${{needs.make-pr-to-main.outputs.PR_URL}}
+    steps:
+       - uses: actions/checkout@v4
+       - name: Checkout
+         run: echo "Checkout main"
+         shell: bash
+
+       - name: Merge to main
+         run: |
+                echo $PR_URL
+                gh pr merge $PR_URL --merge --auto 
+         shell: bash
+            
+              
