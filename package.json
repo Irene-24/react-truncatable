@@ -51,8 +51,7 @@
     }
   },
   "files": [
-    "dist",
-    "README.md"
+    "dist"
   ],
   "devDependencies": {
     "@storybook/addon-essentials": "7.4.0",
