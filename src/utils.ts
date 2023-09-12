@@ -2,7 +2,7 @@
  * Utility function to remove escaped characters from a string.
  *
  * @param {string} str - The input string.
- * @returns {string} The stripped string without escaped characters.
+ * @returns {string} The trimmed stripped string without escaped characters.
  */
 function stripEscapedCharacters(str: string): string {
   const escapedCharsRegex = /\r?\n|\r|\t/gim;
