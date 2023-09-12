@@ -29,6 +29,8 @@ jobs:
 
   merge-from-release:
         runs-on: ubuntu-latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
         needs: pr-from-release
         steps:
             - name: Checkout main to merge release
