@@ -1,8 +1,10 @@
-[![Test,Build,Publish](https://github.com/Irene-24/react-truncatable/actions/workflows/build-publish.yaml/badge.svg)](https://github.com/Irene-24/react-truncatable/actions/workflows/build-publish.yaml)
+# React Truncatable
 
-[![Chromatic](https://github.com/Irene-24/react-truncatable/actions/workflows/chromatic.yaml/badge.svg)](https://github.com/Irene-24/react-truncatable/actions/workflows/chromatic.yaml)
+[![NPM Publish](https://github.com/Irene-24/react-truncatable/actions/workflows/Build-deploy-npm.yaml/badge.svg)](https://github.com/Irene-24/react-truncatable/actions/workflows/Build-deploy-npm.yaml)
 
-# Overview
+[![Deploy storybook via chromatic](https://github.com/Irene-24/react-truncatable/actions/workflows/Deploy-chromatic.yaml/badge.svg)](https://github.com/Irene-24/react-truncatable/actions/workflows/Deploy-chromatic.yaml)
+
+## Overview
 
 A React component that truncates text based on available space and supports multiline. Perfect for creating article previews, blog snippets, product card descriptions and many more.
 
