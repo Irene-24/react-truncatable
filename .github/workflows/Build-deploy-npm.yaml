@@ -4,6 +4,7 @@ on:
   release:
     types: [published]
 
+permissions: write-all
 
 jobs:
   pr-from-release:
@@ -28,6 +29,9 @@ jobs:
 
   merge-from-release:
         runs-on: ubuntu-latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
+          PR_URL: ${{needs.pr-from-release.outputs.PR_URL}}
         needs: pr-from-release
         steps:
             - name: Checkout main to merge release
@@ -39,7 +43,7 @@ jobs:
             - name: Merge to main   
               run: |
                     echo $PR_URL
-                    gh pr merge $PR_URL --merge --auto 
+                    gh pr merge $PR_URL --merge --admin
               shell: bash  
 
 
