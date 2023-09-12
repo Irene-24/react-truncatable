@@ -1,0 +1,48 @@
+name: Automerge-release
+
+on: 
+    workflow_run: 
+        workflows: [Approve-dev-pr]
+        types: [completed]
+            
+permissions: write-all
+
+jobs:
+    make-pr-to-release:
+        runs-on: ubuntu-latest     
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
+        outputs:
+         PR_URL: ${{ steps.create-pr.outputs.PR_URL }}
+        steps:
+            - uses: actions/checkout@v4
+              name: Checkout dev
+              with:
+                ref: dev
+             
+
+            - name: Create PR to release  
+              id: create-pr
+              run: |
+               pr_output=$(gh pr create --base release --head dev --title "PR from dev to release" --body "PR from dev to release") 
+               echo "PR_URL=$pr_output" >> $GITHUB_OUTPUT
+              shell: bash       
+               
+
+    automerge-release:
+        runs-on: ubuntu-latest
+        needs: make-pr-to-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{needs.make-pr-to-release.outputs.PR_URL}}
+        steps:
+           - uses: actions/checkout@v4
+             name: Checkout release to merge dev
+             with:
+                ref: release
+
+           - name: Merge to release
+             run: |
+                echo $PR_URL
+                gh pr merge $PR_URL --merge --auto 
+             shell: bash 

@@ -1,0 +1,29 @@
+name: 'Deploy storybook via chromatic'
+
+on: 
+    push:
+        branches: 
+            - main
+        paths:
+            - 'src/**'
+            - '.storybook/**'
+    workflow_dispatch: 
+
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout main for deployment
+        with:
+          ref: 
+            main
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
