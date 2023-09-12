@@ -4,6 +4,7 @@ on:
   release:
     types: [published]
 
+permissions: write-all
 
 jobs:
   pr-from-release:
