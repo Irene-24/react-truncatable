@@ -42,7 +42,11 @@ jobs:
             run: |
                 version_increment="${{ github.event.inputs.version }}"
                 echo  $version_increment
-                npm version $version_increment  
+                npm version $version_increment   
+
+          - name: View all branches
+            run: |
+                git branch   
 
           - name: Run git add
             run: |
