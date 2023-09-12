@@ -1,4 +1,4 @@
-name: Test and Merge to Main
+name: Test and Merge to Dev, then Main
 
 on:
   pull_request:
@@ -50,19 +50,15 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git config pull.ff true
-          echo "${{ github.ref }}"           
+          git config pull.ff true      
 
 
       - name: Merge to Dev if tests pass
         run: |
-          if [ $? -eq 0 ]; then
             git pull origin dev  
             git merge --no-ff temp-branch
             git push origin dev --tags
-          else
-            echo "Tests failed, not merging to dev."
-          fi
+        
 
   make-pr-to-main:
     runs-on: ubuntu-latest     
