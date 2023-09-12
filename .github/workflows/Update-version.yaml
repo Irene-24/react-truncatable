@@ -25,7 +25,7 @@ jobs:
           - name: Checkout release branch
             uses: actions/checkout@v4
             with:
-                ref: release
+                ref: origin/release
 
           - name: Set up Node.js
             uses: actions/setup-node@v3
