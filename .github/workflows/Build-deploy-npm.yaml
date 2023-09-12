@@ -42,7 +42,7 @@ jobs:
             - name: Merge to main   
               run: |
                     echo $PR_URL
-                    gh pr merge $PR_URL --merge --auto 
+                    gh pr merge $PR_URL --merge --auto --admin
               shell: bash  
 
 
