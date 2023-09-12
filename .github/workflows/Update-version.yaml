@@ -1,0 +1,59 @@
+name: Update-version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version increment (major, minor, patch)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - 'major'
+          - 'minor'
+          - 'patch'
+
+            
+permissions: write-all
+
+jobs:
+    update-version:
+        runs-on: ubuntu-latest     
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
+        steps:
+          - name: Checkout release branch
+            uses: actions/checkout@v4
+            with:
+                ref: release
+
+          - name: Set up Node.js
+            uses: actions/setup-node@v3
+            with:
+                node-version: 16  
+
+          - name: Config git
+            run: |
+                git config user.name "github-actions"
+                git config user.email "github-actions@github.com"
+                git config pull.ff true        
+
+          - name: Run npm version with input
+            run: |
+                version_increment="${{ github.event.inputs.version }}"
+                echo  $version_increment
+                npm version $version_increment  
+
+          - name: Run git add
+            run: |
+                git add .  
+
+          - name: Run git commit
+            run: |
+                git commit -m 'Commit package.json : ${{ github.event.inputs.version }} release'
+
+          - name: Push changes
+            run: |
+                git push origin release --tags
+
+          

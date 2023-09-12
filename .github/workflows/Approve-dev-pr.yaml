@@ -1,0 +1,37 @@
+name: Approve-dev-pr
+
+on: 
+    pull_request_target: 
+        branches: 
+            dev
+        types: 
+            - closed
+
+permissions: write-all
+
+jobs:
+    test-changes:
+        runs-on: ubuntu-latest
+        if: github.event.pull_request.merged
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+          with:
+            ref: dev          
+
+        - name: Setup Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: 16
+
+        - name: Install Dependencies with Yarn
+          run: yarn install  
+
+        - name: Utility testing with vitest
+          run: yarn test  
+
+        - name: Cypress run for component testing
+          uses: cypress-io/github-action@v6
+          with:
+            command: yarn cypress:run
+            browser: chrome

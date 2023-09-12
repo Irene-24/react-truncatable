@@ -1,0 +1,71 @@
+name: Build-deploy-npm
+
+on:
+  release:
+    types: [published]
+
+
+jobs:
+  pr-from-release:
+        runs-on: ubuntu-latest     
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   
+        outputs:
+         PR_URL: ${{ steps.create-pr-main.outputs.PR_URL }}
+        steps:
+            - uses: actions/checkout@v4
+              name: Checkout release 
+              with:
+                ref: release
+             
+
+            - name: Create PR to main  
+              id: create-pr-main
+              run: |
+               pr_output=$(gh pr create --base main --head release --title "PR from release to main" --body "PR from release to main") 
+               echo "PR_URL=$pr_output" >> $GITHUB_OUTPUT
+              shell: bash       
+
+  merge-from-release:
+        runs-on: ubuntu-latest
+        needs: pr-from-release
+        steps:
+            - name: Checkout main to merge release
+              uses: actions/checkout@v4
+              with:
+                  ref:
+                      main
+
+            - name: Merge to main   
+              run: |
+                    echo $PR_URL
+                    gh pr merge $PR_URL --merge --auto 
+              shell: bash  
+
+
+  publish-npm:
+    runs-on: ubuntu-latest
+    needs: merge-from-release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref:
+            main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install Dependencies with Yarn
+        run: yarn install  
+
+      - name: Build package
+        run: yarn build 
+
+      - name: Publish to npm with Yarn              
+        run: yarn publish --access public 
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
