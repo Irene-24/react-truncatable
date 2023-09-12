@@ -37,9 +37,9 @@ jobs:
           PR_URL: ${{needs.make-pr-to-release.outputs.PR_URL}}
         steps:
            - uses: actions/checkout@v4
-             name: Checkout release to merge dev
+             name: Checkout main to merge release
              with:
-                ref: release
+                ref: main
 
            - name: Merge to release
              run: |
