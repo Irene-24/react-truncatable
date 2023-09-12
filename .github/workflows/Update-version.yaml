@@ -25,7 +25,7 @@ jobs:
           - name: Checkout release branch
             uses: actions/checkout@v4
             with:
-                ref: origin/release
+                ref: release
 
           - name: Set up Node.js
             uses: actions/setup-node@v3
@@ -53,8 +53,12 @@ jobs:
                 git add .  
 
           - name: Run git commit
+            #Hack to let me modify current branch
             run: |
+                set +e
                 git commit -m 'Commit package.json : ${{ github.event.inputs.version }} release'
+                set -e        
+
 
           - name: Push changes
             run: |
